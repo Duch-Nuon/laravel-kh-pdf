@@ -3,6 +3,7 @@
 namespace KhmerPdfImg\LaravelKhPdfImg\Providers;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
+use KhmerPdfImg\LaravelKhPdfImg\Controllers\PdfImgKhController;
 
 class PdfImgKhServiceProvider extends ServiceProvider
 {

@@ -9,6 +9,10 @@
             "KhmerPdfImg\\LaravelKhPdfImg\\": "src/"
         }
     },
+    "require": {
+        "php": "^8.0",
+        "mpdf/mpdf": "^8.0"
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -22,8 +26,5 @@
             "email": "duchnuon@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {
-        "php": "^8.0"
-    }
+    "minimum-stability": "stable"
 }
