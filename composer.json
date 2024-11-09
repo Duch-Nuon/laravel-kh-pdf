@@ -1,0 +1,20 @@
+{
+    "name": "khmer-pdf-img/php-kh-pdf-img",
+    "type": "package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "KhmerPdfImg\\PhpKhPdfImg\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "nuon",
+            "email": "duchnuon@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0"
+    }
+}
