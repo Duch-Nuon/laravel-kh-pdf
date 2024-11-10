@@ -1,12 +1,12 @@
 {
-    "name": "khmer-pdf-img/laravel-kh-pdf-img",
+    "name": "khmer-pdf/laravel-kh-pdf",
     "type": "package",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["Pdf", "package"],
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "KhmerPdfImg\\LaravelKhPdfImg\\": "src/"
+            "KhmerPdf\\LaravelKhPdf\\": "src/"
         }
     },
     "require": {
@@ -16,7 +16,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "KhmerPdfImg\\LaravelKhPdfImg\\Providers\\PdfImgKhServiceProvider"
+                "KhmerPdf\\LaravelKhPdf\\Providers\\PdfKhServiceProvider"
             ]
         }
     },

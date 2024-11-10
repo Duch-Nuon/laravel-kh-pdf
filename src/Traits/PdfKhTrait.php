@@ -1,10 +1,6 @@
 <?php
 
-namespace KhmerPdfImg\LaravelKhPdfImg\Traits;
-use Mpdf\Mpdf;
-use Mpdf\Config\FontVariables;
-use Mpdf\Config\ConfigVariables;
-use Illuminate\Support\Facades\Config;
+namespace KhmerPdf\LaravelKhPdf\Traits;
 use Illuminate\Support\Facades\Storage;
 
 trait PdfKhTrait 

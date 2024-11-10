@@ -1,15 +1,15 @@
 <?php
 
-namespace KhmerPdfImg\LaravelKhPdfImg\Providers;
+namespace KhmerPdf\LaravelKhPdf\Providers;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 
-class PdfImgKhServiceProvider extends ServiceProvider
+class PdfKhServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/khPdfImg.php', 'khPdfImg');
+        $this->mergeConfigFrom(__DIR__.'/../config/khPdf.php', 'khPdf');
         $this->registerMPdf();
     }
 
@@ -18,23 +18,23 @@ class PdfImgKhServiceProvider extends ServiceProvider
         $this->app->singleton('mPdf', function ($app) {
 
             $fontPath = __DIR__ . '/../Fonts/KhmerOs';
-            $fontPathConfig = config('khPdfImg.pdf.font_path');
+            $fontPathConfig = config('khPdf.pdf.font_path');
 
             $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
             $fontDirs = $defaultConfig['fontDir'];
 
             $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
             $fontData = $defaultFontConfig['fontdata'];
-            $fontDataConfig = config('khPdfImg.pdf.font_data', []);
+            $fontDataConfig = config('khPdf.pdf.font_data', []);
 
             return new \Mpdf\Mpdf(
                 [
 
-                'default_font' => config('khPdfImg.pdf.default_font', 'battambang'),
-                'default_font_size' => config('khPdfImg.pdf.default_font_size', 12),
-                'tempDir' => config('khPdfImg.pdf.temp_dir', storage_path('app/temp')),
-                'format' => config('khPdfImg.pdf.page_size', 'A4'),
-                'orientation' => config('khPdfImg.pdf.orientation', 'P'),
+                'default_font' => config('khPdf.pdf.default_font', 'battambang'),
+                'default_font_size' => config('khPdf.pdf.default_font_size', 12),
+                'tempDir' => config('khPdf.pdf.temp_dir', storage_path('app/temp')),
+                'format' => config('khPdf.pdf.page_size', 'A4'),
+                'orientation' => config('khPdf.pdf.orientation', 'P'),
 
                 'fontDir' => array_merge($fontDirs, [$fontPath, $fontPathConfig]),
                 
@@ -61,8 +61,8 @@ class PdfImgKhServiceProvider extends ServiceProvider
     protected function publishAssets(): void
     {
         $this->publishes([
-            __DIR__.'/../config/khPdfImg.php' => config_path('khPdfImg.php'),
-        ], 'khPdfImg');
+            __DIR__.'/../config/khPdf.php' => config_path('khPdf.php'),
+        ], 'khPdf');
     }
 
     public function boot()
@@ -72,9 +72,9 @@ class PdfImgKhServiceProvider extends ServiceProvider
             $this->publishAssets();
 
             // Auto-publish if the config does not already exist
-            if (!file_exists(config_path('khPdfImg.php'))) {
+            if (!file_exists(config_path('khPdf.php'))) {
                 Artisan::call('vendor:publish', [
-                    '--tag' => 'khPdfImg',
+                    '--tag' => 'khPdf',
                 ]);
             }
         }
