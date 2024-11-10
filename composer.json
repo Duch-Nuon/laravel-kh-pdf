@@ -1,8 +1,8 @@
 {
     "name": "khmer-pdf/laravel-kh-pdf",
     "type": "package",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["Pdf", "package"],
+    "description": "The simple package laravel for support khmer font with pdf with mPdf",
+    "keywords": ["pdf", "package", "mPdf", "laravel","laravel pdf khmer", "khmer", "khmer pdf"],
     "license": "MIT",
     "autoload": {
         "psr-4": {
