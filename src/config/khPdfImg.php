@@ -34,7 +34,7 @@ return [
         | Setting a custom tempDir in Laravel's storage is useful for permission management.
         |
         */
-        'temp_dir' => storage_path('temp/'),
+        'temp_dir' => storage_path('app/temp'),
 
         /*
         |--------------------------------------------------------------------------

@@ -32,7 +32,7 @@ class PdfImgKhServiceProvider extends ServiceProvider
 
                 'default_font' => config('khPdfImg.pdf.default_font', 'battambang'),
                 'default_font_size' => config('khPdfImg.pdf.default_font_size', 12),
-                'tempDir' => config('khPdfImg.pdf.temp_dir', storage_path('temp')),
+                'tempDir' => config('khPdfImg.pdf.temp_dir', storage_path('app/temp')),
                 'format' => config('khPdfImg.pdf.page_size', 'A4'),
                 'orientation' => config('khPdfImg.pdf.orientation', 'P'),
 
