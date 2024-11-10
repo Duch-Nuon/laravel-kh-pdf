@@ -1,10 +1,11 @@
 <?php
 
 namespace KhmerPdfImg\LaravelKhPdfImg\Traits;
-use Mpdf\MPdf;
+use Mpdf\Mpdf;
+use Mpdf\Config\FontVariables;
+use Mpdf\Config\ConfigVariables;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Response;
-use Mpdf\Mpdf as MpdfMpdf;
 
 trait PdfKhTrait 
 {
@@ -17,7 +18,7 @@ trait PdfKhTrait
      */
     public function loadHtml(string $htmlContent)
     {
-        $this->pdf = new MpdfMpdf();
+        $this->pdf = app('mPdf');
         $this->pdf->WriteHTML($htmlContent);
 
         return $this;  // Return $this for method chaining

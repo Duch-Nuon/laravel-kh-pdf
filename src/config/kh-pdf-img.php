@@ -3,32 +3,24 @@
 return [
 
         'pdf' => [
-            
-            'font' => [
-                'default' => [
-                    'family' => 'Helvetica',
-                    'size' => 12,
-                ],
-                'alternative' => [
-                    'family' => 'Times-Roman',
-                    'size' => 10,
-                ],
-            ],
-
-            'page' => [
-                'A4' => [
-                    'width' => 595,
-                    'height' => 842,
-                ],
-                'A5' => [
-                    'width' => 420,
-                    'height' => 595,
-                ],
-                'letter' => [
-                    'width' => 612,
-                    'height' => 792,
-                ],
-            ],
+            'mode' => 'utf-8',
+            'default_font' => 'battambang',
+            'format'                => 'A4',
+            'author'                => '',
+            'subject'               => '',
+            'keywords'              => '',
+            'creator'               => 'Laravel Pdf',
+            'display_mode'          => 'fullpage',
+            'tempDir'               => storage_path('temp/mPdf'),
+            'pdf_a'                 => false,
+            'pdf_a_auto'            => false,
+            // 'font_path' => public_path(''),
+            // 'font_data' => [
+            //     'khf1' => [
+            //         'R'  => 'KHMERMEF1.ttf',    // regular font
+            //         'useOTL' => 0xFF,    // required for complicated langs like Persian, Arabic and Chinese
+            //     ],
+            // ],
         ],
 
         'image' => [],
