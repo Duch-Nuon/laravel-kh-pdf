@@ -9,7 +9,7 @@ class PdfImgKhServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/kh-pdf-img.php', 'kh-pdf-img');
+        $this->mergeConfigFrom(__DIR__.'/../config/khPdfImg.php', 'khPdfImg');
         $this->registerMPdf();
     }
 
@@ -17,8 +17,7 @@ class PdfImgKhServiceProvider extends ServiceProvider
     {
         $this->app->singleton('mPdf', function ($app) {
 
-            $fontPathBattambang = __DIR__ . '/../Fonts/Battambang';
-            $fontPathMoul = __DIR__ . '/../Fonts/Moul';
+            $fontPath = __DIR__ . '/../Fonts/KhmerOs';
 
             $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
             $fontDirs = $defaultConfig['fontDir'];
@@ -30,25 +29,24 @@ class PdfImgKhServiceProvider extends ServiceProvider
             return new \Mpdf\Mpdf(
                 [
 
-                'fontDir' => array_merge($fontDirs, [$fontPathBattambang, $fontPathMoul]),
+                'fontDir' => array_merge($fontDirs, [$fontPath]),
                 
                 // https://mpdf.github.io/fonts-languages/fonts-in-mpdf-7-x.html
 
                 'fontdata' => $fontData + [
 
                     'battambang' => [ // lowercase letters only in font key
-                        'R' => 'Battambang-Regular.ttf',
-                        'B' => 'Battambang-Bold.ttf',
-                        'L' => 'Battambang-Light.ttf',
+                        'R' => 'KhmerOSbattambang.ttf',
+                        'B' => 'KhmerOSniroth.ttf',
                         'useOTL' => 0xFF,
                     ],
-                    'khmer-moul' => [ // lowercase letters only in font key
-                        'R' => 'Moul-Regular.ttf',
+                    'kh-moul' => [ // lowercase letters only in font key
+                        'R' => 'KhmerOSmuol.ttf',
                         'useOTL' => 0xFF,
                     ],
                 ],
 
-                'default_font' => config('kh-pdf-img.pdf.default_font', 'battambang'),
+                'default_font' => config('khPdfImg.pdf.default_font', 'khmer-r'),
             ]);
         });
     }
@@ -56,8 +54,8 @@ class PdfImgKhServiceProvider extends ServiceProvider
     protected function publishAssets(): void
     {
         $this->publishes([
-            __DIR__.'/../config/kh-pdf-img.php' => config_path('kh-pdf-img.php'),
-        ], 'kh-pdf-img');
+            __DIR__.'/../config/khPdfImg.php' => config_path('khPdfImg.php'),
+        ], 'khPdfImg');
     }
 
     public function boot()
@@ -67,9 +65,9 @@ class PdfImgKhServiceProvider extends ServiceProvider
             $this->publishAssets();
 
             // Auto-publish if the config does not already exist
-            if (!file_exists(config_path('kh-pdf-img.php'))) {
+            if (!file_exists(config_path('khPdfImg.php'))) {
                 Artisan::call('vendor:publish', [
-                    '--tag' => 'kh-pdf-img',
+                    '--tag' => 'khPdfImg',
                 ]);
             }
         }

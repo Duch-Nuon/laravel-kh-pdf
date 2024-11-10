@@ -1,8 +1,8 @@
-Copyright 2020 The Moul Project Authors (https://github.com/danhhong/Moul)
-
+Copyright (c) 2010, Danh Hong (khmertype.blogspot.com),
+with Reserved Font Name Taprom.
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
-https://openfontlicense.org
+http://scripts.sil.org/OFL
 
 
 -----------------------------------------------------------
