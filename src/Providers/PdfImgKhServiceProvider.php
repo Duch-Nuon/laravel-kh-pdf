@@ -18,18 +18,25 @@ class PdfImgKhServiceProvider extends ServiceProvider
         $this->app->singleton('mPdf', function ($app) {
 
             $fontPath = __DIR__ . '/../Fonts/KhmerOs';
+            $fontPathConfig = config('khPdfImg.pdf.font_path');
 
             $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
             $fontDirs = $defaultConfig['fontDir'];
 
             $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
             $fontData = $defaultFontConfig['fontdata'];
-
+            $fontDataConfig = config('khPdfImg.pdf.font_data', []);
 
             return new \Mpdf\Mpdf(
                 [
 
-                'fontDir' => array_merge($fontDirs, [$fontPath]),
+                'default_font' => config('khPdfImg.pdf.default_font', 'battambang'),
+                'default_font_size' => config('khPdfImg.pdf.default_font_size', 12),
+                'tempDir' => config('khPdfImg.pdf.temp_dir', storage_path('temp')),
+                'format' => config('khPdfImg.pdf.page_size', 'A4'),
+                'orientation' => config('khPdfImg.pdf.orientation', 'P'),
+
+                'fontDir' => array_merge($fontDirs, [$fontPath, $fontPathConfig]),
                 
                 // https://mpdf.github.io/fonts-languages/fonts-in-mpdf-7-x.html
 
@@ -37,16 +44,16 @@ class PdfImgKhServiceProvider extends ServiceProvider
 
                     'battambang' => [ // lowercase letters only in font key
                         'R' => 'KhmerOSbattambang.ttf',
-                        'B' => 'KhmerOSniroth.ttf',
+                        'B' => 'KhmerOSBattambang-Bold.ttf',
                         'useOTL' => 0xFF,
                     ],
                     'kh-moul' => [ // lowercase letters only in font key
                         'R' => 'KhmerOSmuol.ttf',
                         'useOTL' => 0xFF,
                     ],
-                ],
 
-                'default_font' => config('khPdfImg.pdf.default_font', 'khmer-r'),
+                ] + $fontDataConfig,
+
             ]);
         });
     }
