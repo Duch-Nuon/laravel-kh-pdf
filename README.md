@@ -7,5 +7,5 @@ This Laravel package integrates with mPDF to generate PDF documents containing K
 To install the package, run the following command:
 
 ```bash
-composer require your-vendor-name/laravel-khmer-pdf
+composer require khmer-pdf/laravel-kh-pdf
 
