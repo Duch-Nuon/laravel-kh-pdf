@@ -13,9 +13,13 @@ composer require khmer-pdf/laravel-kh-pdf
 ## Available Method
 
  **loadHtml(string $html)**\
+
  **download(string $filename)**\
+
  **stream(string $filename)**\
+
  **save(string $path, string $disk = 'public')**\
+ 
  **addMPdfConfig(array $config)**\
 
 ## Configure Fonts in the Package
