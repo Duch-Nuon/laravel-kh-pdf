@@ -26,7 +26,7 @@ For more options config: **addMPdfConfig(array $config)**
 
 An associative array containing configuration options. For a list of available options, refer to mPDF Configuration Options.
 
-[a link]https://mpdf.github.io/reference/mpdf-variables/overview.html
+https://mpdf.github.io/reference/mpdf-variables/overview.html
 
 
 ## Setup & Configuration
