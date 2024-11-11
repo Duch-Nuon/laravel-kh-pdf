@@ -4,6 +4,7 @@ namespace KhmerPdf\LaravelKhPdf\Providers;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
+use KhmerPdf\LaravelKhPdf\Controllers\PdfKh;
 
 class PdfKhServiceProvider extends ServiceProvider
 {
@@ -11,11 +12,15 @@ class PdfKhServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/khPdf.php', 'khPdf');
         $this->registerMPdf();
+
+        $this->app->singleton('pdfKh', function ($app) {
+            return new PdfKh();
+        });
     }
 
     protected function registerMPdf()
     {
-        $this->app->singleton('mPdf', function ($app) {
+        $this->app->singleton('mPdf', function ($app, $config) {
 
             $fontPath = __DIR__ . '/../Fonts/KhmerOs';
             $fontPathConfig = config('khPdf.pdf.font_path');
@@ -27,8 +32,7 @@ class PdfKhServiceProvider extends ServiceProvider
             $fontData = $defaultFontConfig['fontdata'];
             $fontDataConfig = config('khPdf.pdf.font_data', []);
 
-            return new \Mpdf\Mpdf(
-                [
+            $mPdfConfig =   [
 
                 'default_font' => config('khPdf.pdf.default_font', 'battambang'),
                 'default_font_size' => config('khPdf.pdf.default_font_size', 12),
@@ -53,8 +57,13 @@ class PdfKhServiceProvider extends ServiceProvider
                     ],
 
                 ] + $fontDataConfig,
+            ];
 
-            ]);
+            if($config){
+                $mPdfConfig = array_merge($mPdfConfig, $config);
+            }
+
+            return new \Mpdf\Mpdf($mPdfConfig);
         });
     }
 

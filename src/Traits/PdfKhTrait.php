@@ -9,15 +9,31 @@ trait PdfKhTrait
     protected $filename;
     protected $pdf;
 
+    protected $config = [];
+
+
+     /**
+     * Initialize mPDF instance with the stored configuration and HTML content.
+     */
+    protected function initMPdf()
+    {
+        if (!$this->pdf) {
+            $this->pdf = app()->makeWith('mPdf', $this->config);
+
+            if ($this->htmlContent) {
+                $this->pdf->WriteHTML($this->htmlContent);
+            }
+        }
+        return $this->pdf;
+    }
+
     /**
      * Load HTML content for PDF generation
      */
-    public function loadHtml(string $htmlContent)
+    public function loadHtml(string $html)
     {
-        $this->pdf = app('mPdf');
-        $this->pdf->WriteHTML($htmlContent);
-
-        return $this;  // Return $this for method chaining
+        $this->htmlContent = $html;
+        return $this;
     }
 
     /**
@@ -26,7 +42,7 @@ trait PdfKhTrait
     public function download(string $filename)
     {
         $this->filename = $filename;
-        return $this->pdf->Output($this->filename, 'D');
+        return $this->initMPdf()->Output($this->filename, 'D');
     }
 
     /**
@@ -35,7 +51,7 @@ trait PdfKhTrait
     public function stream(string $filename)
     {
         $this->filename = $filename;
-        return $this->pdf->Output($this->filename, 'I');
+        return $this->initMPdf()->Output($this->filename, 'I');
     }
 
     /**
@@ -48,7 +64,20 @@ trait PdfKhTrait
             $disk = 'public';
         }
         // Save to the specified path
-        Storage::disk($disk)->put($path, $this->pdf->OutputBinaryData());
+        Storage::disk($disk)->put($path, $this->initMPdf()->OutputBinaryData());
         return Storage::disk($disk)->url($path); // return url 
     }
+
+    /**
+     * Creates a new mPDF instance with the specified configuration.
+     *
+     * @param array $config Configuration options for mPDF.
+     *                      Refer to https://mpdf.github.io/reference/mpdf-variables/overview.html
+     */
+    public function addMPdfConfig($config = [])
+    {
+        $this->config = $config;
+        return $this;
+    }
+
 }
