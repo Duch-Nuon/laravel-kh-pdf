@@ -80,7 +80,7 @@ You can more fonts.
     ],
 ],
 ```
-`test.blade.php`
+`test-font.blade.php`
 ```html
 <!DOCTYPE html>
 <html lang="en">
