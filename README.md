@@ -1,6 +1,6 @@
-# laravel-kh-pdf-img Package
+# laravel-kh-pdf Package
 
-This Laravel package integrates with mPDF to generate PDF documents containing Khmer text.
+This Laravel package integrates with mPDF to generate PDF documents containing Khmer text, support fonts khmer by Default.
 
 ## Installation
 
