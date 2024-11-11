@@ -1,9 +1,18 @@
 {
     "name": "khmer-pdf/laravel-kh-pdf",
     "type": "package",
-    "description": "The simple package laravel for support khmer font with pdf with mPdf",
-    "keywords": ["pdf", "package", "mPdf", "laravel","laravel pdf khmer", "khmer", "khmer pdf"],
+    "description": "A simple Laravel package for supporting Khmer font in PDFs using mPdf.",
+    "keywords": [
+        "pdf",
+        "package",
+        "mPdf",
+        "laravel",
+        "laravel pdf khmer",
+        "khmer",
+        "khmer pdf"
+    ],
     "license": "MIT",
+    "homepage": "https://github.com/Duch-Nuon/laravel-kh-pdf", 
     "autoload": {
         "psr-4": {
             "KhmerPdf\\LaravelKhPdf\\": "src/"
@@ -26,5 +35,6 @@
             "email": "duchnuon@gmail.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
