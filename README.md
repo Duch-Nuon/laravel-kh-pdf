@@ -10,6 +10,29 @@ To install the package, run the following command:
 composer require khmer-pdf/laravel-kh-pdf
 ```
 
+## Basic Usage:
+
+
+```php
+<?php
+use Illuminate\Support\Facades\Route;
+use KhmerPdf\LaravelKhPdf\Facades\PdfKh;
+Route::get('/', function () {
+    $view = view('test-font')->render();
+    $pdf = PdfKh::loadHtml($view)->stream('test.pdf');            
+    return $pdf;
+});
+```
+```php
+use Illuminate\Support\Facades\Route;
+use KhmerPdf\LaravelKhPdf\Facades\PdfKh;
+Route::get('/', function () {
+    $view = view('test-font')->render();
+    $pdf = PdfKh::loadHtml($view)->addMPdfConfig(['format' => 'A5',])->stream('test.pdf');       
+    return $pdf;
+});
+```
+
 ## Available Method
 
  **loadHtml(string $html)**
@@ -28,6 +51,10 @@ An associative array containing configuration options. For a list of available o
 
 https://mpdf.github.io/reference/mpdf-variables/overview.html
 
+## Example
+   ```php
+   addMPdfConfig(['format' => 'A5-L',]);
+   ```
 
 ## Setup & Configuration
 
