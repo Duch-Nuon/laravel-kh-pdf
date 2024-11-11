@@ -12,11 +12,9 @@ composer require khmer-pdf/laravel-kh-pdf
 
 ## Configure Fonts in the Package
 
-configure the font settings in the config/khPdf.php file. Here's how you can set it up:
-
-Update font_path and font_data in config/khPdf.php:
-
-```bash
+This guide will show you how to configure the Khmer fonts in the `config/khPdf.php` file for PDF generation using `khPdf`. By default, the Khmer fonts **KhmerOSBattambang**, **KhmerOS** and **KhmerOSMuol** are supported.
+You can more fonts.
+```php
 'pdf' => [
     'default_font' => 'battambang', // Set your default font here
 
@@ -24,18 +22,41 @@ Update font_path and font_data in config/khPdf.php:
     'font_path' => public_path('fonts/'),
 
     'font_data' => [
-        'battambang' => [
-            'R' => 'KhmerOSbattambang.ttf',  // Regular font file
-            'B' => 'KhmerOSBattambang-Bold.ttf',  // Bold font file
-            'useOTL' => 0xFF, 
+        'battambang' => [ // lowercase letters only in font key
+            'R' => 'KhmerOSbattambang.ttf',
+            'B' => 'KhmerOSBattambang-Bold.ttf',
+            'useOTL' => 0xFF,
         ],
-        'seamreap' => [
-            'R' => 'KhmerOSbattambang.ttf',  // Regular font file
-            'B' => 'KhmerOSBattambang-Bold.ttf',  // Bold font file
+        'khmermuol' => [ // lowercase letters only in font key
+            'R' => 'KhmerOSmuol.ttf',
             'useOTL' => 0xFF,
         ],
     ],
 ],
 ```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            font-size: 25px;
+            /* font-family: 'battambang';
+            font-weight: bold; */
+
+            font-family: 'khmermuol';
+        }
+    </style>
+</head>
+<body>
+    <p>សួស្តី ​ពិភពលោក ! Hello World</p>
+</body>
+</html>
+```
+
+
 
 

@@ -51,7 +51,7 @@ class PdfKhServiceProvider extends ServiceProvider
                         'B' => 'KhmerOSBattambang-Bold.ttf',
                         'useOTL' => 0xFF,
                     ],
-                    'kh-moul' => [ // lowercase letters only in font key
+                    'khmermuol' => [ // lowercase letters only in font key
                         'R' => 'KhmerOSmuol.ttf',
                         'useOTL' => 0xFF,
                     ],
