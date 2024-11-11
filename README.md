@@ -10,6 +10,14 @@ To install the package, run the following command:
 composer require khmer-pdf/laravel-kh-pdf
 ```
 
+## Available Method
+
+ **loadHtml(string $html)**
+ **download(string $filename)**
+ **stream(string $filename)**
+ **save(string $path, string $disk = 'public')**
+ **addMPdfConfig(array $config)**
+
 ## Configure Fonts in the Package
 
 This guide will show you how to configure the Khmer fonts in the `config/khPdf.php` file for PDF generation using `khPdf`. By default, the Khmer fonts **KhmerOSBattambang**, **KhmerOS** and **KhmerOSMuol** are supported.
