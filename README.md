@@ -4,7 +4,7 @@
 [![Total Downloads](https://poser.pugx.org/khmer-pdf/laravel-kh-pdf/downloads)](https://packagist.org/packages/khmer-pdf/laravel-kh-pdf)
 [![License](https://poser.pugx.org/khmer-pdf/laravel-kh-pdf/license)](https://packagist.org/packages/khmer-pdf/laravel-kh-pdf)
 
-This Laravel package integrates with mPDF to generate PDF documents containing Khmer text, support fonts khmer by Default.
+This Laravel package integrates with mPDF to generate PDF documents for support fonts khmer by default.
 
 ## Installation
 
