@@ -11,19 +11,17 @@ trait PdfKhTrait
 
     protected $config = [];
 
-
      /**
      * Initialize mPDF instance with the stored configuration and HTML content.
      */
     protected function initMPdf()
     {
-        if (!$this->pdf) {
+        if(!$this->pdf)
+        {
             $this->pdf = app()->makeWith('mPdf', $this->config);
-
-            if ($this->htmlContent) {
-                $this->pdf->WriteHTML($this->htmlContent);
-            }
+            $this->pdf->WriteHTML($this->htmlContent);
         }
+
         return $this->pdf;
     }
 
@@ -77,6 +75,30 @@ trait PdfKhTrait
     public function addMPdfConfig($config = [])
     {
         $this->config = $config;
+        return $this;
+    }
+    
+    /**
+    * @param array $config Configuration options for mPDF.
+    *                      Refer to https://mpdf.github.io/reference/mpdf-variables/overview.html
+    */
+    public function watermarkText(
+        string $text, 
+        float $opacity = 0.2, 
+        string $font = 'battambang',
+        int $size = 100,
+        int $angle = 45,
+        string $color = '',
+        array $config = []
+    )
+    {
+        $this->config = $config;
+        $this->config['showWatermarkText'] = true;
+        $this->config['watermark_font'] = $font;
+
+        $this->pdf = $this->initMPdf();
+        $this->pdf->SetWatermarkText(new \Mpdf\WatermarkText($text, $size, $angle, $color, $opacity, $font));
+
         return $this;
     }
 
