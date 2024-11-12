@@ -1,5 +1,6 @@
 {
     "name": "khmer-pdf/laravel-kh-pdf",
+    "version": "1.0.1",
     "type": "package",
     "description": "A simple Laravel package for supporting Khmer font in PDFs using mPdf.",
     "keywords": [
