@@ -102,4 +102,46 @@ trait PdfKhTrait
         return $this;
     }
 
+    /**
+    * 
+    * more options for watermarkImage Refer to https://mpdf.github.io/reference/mpdf-classes/watermarkimage.html
+    * 
+    * @param array $config Configuration options for mPDF.
+    *                      Refer to https://mpdf.github.io/reference/mpdf-variables/overview.html                    
+    */
+    public function watermarkImage(
+        string $path,
+        string|int|array $size  = 'p',
+        string|array $position = 'p',
+        float $opacity = 1,
+        bool $behindContent = false,
+        array $config = []
+    )
+    {
+        $this->config = $config;
+        $this->config['showWatermarkImage'] = true;
+
+        $this->pdf = $this->initMPdf();
+        $this->pdf->SetWatermarkImage(new \Mpdf\WatermarkImage($path, $size, $position, $opacity, $behindContent));
+
+        return $this;
+    }
+
+    /**
+     * more options for writeBarcode Refer to https://mpdf.github.io/reference/mpdf-functions/writebarcode.html
+     */
+
+    public function writeBarcode(
+        string $code,
+        int $horizontal,
+        int $vertical,
+        bool $showIsbn = true,
+        int $size = 1,
+        bool $border = true
+    )
+    {
+        $this->pdf = $this->initMPdf();
+        $this->pdf->writeBarcode($code, $showIsbn, $horizontal, $vertical, $size, $border);
+        return $this;
+    }
 }
