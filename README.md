@@ -1,4 +1,4 @@
-# laravel-kh-pdf Package
+# laravel-kh-pdf
 
 [![Latest Stable Version](https://poser.pugx.org/khmer-pdf/laravel-kh-pdf/v/stable)](https://packagist.org/packages/khmer-pdf/laravel-kh-pdf)
 [![Total Downloads](https://poser.pugx.org/khmer-pdf/laravel-kh-pdf/downloads)](https://packagist.org/packages/khmer-pdf/laravel-kh-pdf)
