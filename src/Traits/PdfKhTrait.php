@@ -85,7 +85,7 @@ trait PdfKhTrait
     public function watermarkText(
         string $text, 
         float $opacity = 0.2, 
-        string $font = 'battambang',
+        string $font = 'khmeros',
         int $size = 100,
         int $angle = 45,
         string $color = '',
