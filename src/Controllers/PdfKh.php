@@ -2,9 +2,10 @@
 
 namespace KhmerPdf\LaravelKhPdf\Controllers;
 
+use KhmerPdf\LaravelKhPdf\Interfaces\PdfKhInterface;
 use KhmerPdf\LaravelKhPdf\Traits\PdfKhTrait;
 
-class PdfKh
+class PdfKh implements PdfKhInterface
 {
     use PdfKhTrait;
 }
