@@ -62,7 +62,6 @@ The trait provides the following methods:
 
 ### Examples
 
-```
 `template.blade.php`
 ```html
 <!DOCTYPE html>
@@ -189,11 +188,6 @@ This package is open-source software licensed under the [MIT license](https://op
 ## Contributions
 
 Contributions are welcome! Feel free to submit pull requests or issues on the [GitHub repository](https://github.com/Duch-Nuon/laravel-kh-pdf).
-
----
-
-Let me know if you want to add more examples or style it differently!
-
 
 
 
