@@ -21,7 +21,7 @@ composer require khmer-pdf/laravel-kh-pdf
 Publish the configuration file:
 
 ```bash
-php artisan vendor:publish --tag=khpdf-config
+php artisan vendor:publish --tag=khPdf
 ```
 
 This will create a `config/khPdf.php` file where you can customize font settings and mPDF configurations.
