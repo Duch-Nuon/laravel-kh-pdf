@@ -28,6 +28,17 @@ This will create a `config/khPdf.php` file where you can customize font settings
 
 ## Usage
 
+### Run command to generate demo 
+```bash
+php artisan khPdf:demo
+```
+### Follow the route url
+```bash
+php artisan serve
+```
+```bash
+http://localhost:8000/kh-pdf-test
+```
 ### Basic PDF Generation
 
 Use the `PdfKh` facade to generate PDFs:
