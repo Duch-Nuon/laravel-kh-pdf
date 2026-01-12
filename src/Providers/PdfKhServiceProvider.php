@@ -5,6 +5,7 @@ namespace KhmerPdf\LaravelKhPdf\Providers;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use KhmerPdf\LaravelKhPdf\Controllers\PdfKh;
+use KhmerPdf\LaravelKhPdf\Commands\PdfDemoCommand;
 
 class PdfKhServiceProvider extends ServiceProvider
 {
@@ -16,6 +17,10 @@ class PdfKhServiceProvider extends ServiceProvider
         $this->app->singleton('pdfKh', function ($app) {
             return new PdfKh();
         });
+
+        $this->commands([
+                PdfDemoCommand::class,
+        ]);
     }
 
     protected function registerMPdf()

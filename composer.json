@@ -15,7 +15,8 @@
     "homepage": "https://github.com/Duch-Nuon/laravel-kh-pdf", 
     "autoload": {
         "psr-4": {
-            "KhmerPdf\\LaravelKhPdf\\": "src/"
+            "KhmerPdf\\LaravelKhPdf\\": "src/",
+            "KhmerPdf\\LaravelKhPdf\\Tests\\": "tests/"
         }
     },
     "require": {
@@ -36,5 +37,12 @@
         }
     ],
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "orchestra/testbench": "^10.8",
+        "phpunit/phpunit": "^11.5"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
 }
