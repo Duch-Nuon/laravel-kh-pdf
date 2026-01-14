@@ -12,11 +12,17 @@ class PdfDemoCommand extends Command
 
     public function handle()
     {
-        $this->info('Setting up KhPdf demo Blade and route...');
+        $this->newLine();
+        $this->info('╔══════════════════════════════════════════════════════════════╗');
+        $this->info('║           KhPdf Demo Setup - Configuration Wizard            ║');
+        $this->info('╚══════════════════════════════════════════════════════════════╝');
+        $this->newLine();
 
         $bladePath = resource_path('views/khPdf_test.blade.php');
 
-        // add demo blade file
+        // Create demo blade file
+        $this->line('  <fg=yellow>→</> Creating demo Blade file...');
+        
         if (!File::exists($bladePath)) {
             $bladeContent = <<<HTML
                 <!DOCTYPE html>
@@ -36,18 +42,25 @@ class PdfDemoCommand extends Command
                     </style>
                 </head>
                 <body>
-                    <p>សួស្តី ​ពិភពលោក ! Hello World</p>
+                    <p>សួស្តី ពិភពលោក ! Hello World</p>
                 </body>
                 </html>
                 HTML;
             File::put($bladePath, $bladeContent);
-            $this->info("Blade file created at: resources/views/khpdf_test.blade.php");
+            $this->line("     <fg=green>✓</> Blade file created successfully");
         } else {
-            $this->info("Blade file already exists: resources/views/khpdf_test.blade.php");
+            $this->line("     <fg=blue>ℹ</> Blade file already exists");
         }
+        
+        $this->line("     <fg=gray>Location:</> <fg=cyan>resources/views/khPdf_test.blade.php</>");
 
-        // add demo route
+        $this->newLine();
+
+        // Add demo route
         $routeFile = base_path('routes/web.php');
+        
+        $this->line('  <fg=yellow>→</> Adding demo route...');
+        
         $routeContent = <<<PHP
             \n
             Route::get('/kh-pdf-test', function () {
@@ -59,11 +72,23 @@ class PdfDemoCommand extends Command
 
         if (File::exists($routeFile)) {
             File::append($routeFile, $routeContent);
-            $this->info("Demo route added: <fg=cyan>http://localhost:8000/kh-pdf-test</>");
+            $this->line("     <fg=green>✓</> Route added successfully");
+            $this->line("     <fg=gray>Route:</> <fg=cyan>GET /kh-pdf-test</>");
         } else {
-            $this->error("routes/web.php not found. Add route manually.");
+            $this->line("     <fg=red>✗</> routes/web.php not found");
+            $this->warn('     Please add the route manually to your routes file.');
         }
 
-        $this->info('Setup complete! You can now test with php artisan kh-pdf:test or visit /kh-pdf-test.');
+        $this->newLine();
+        $this->info('─────────────────────────────────────────────────────────────');
+        $this->line('  <fg=green;options=bold>✓ Setup Complete!</>');
+        $this->info('─────────────────────────────────────────────────────────────');
+        $this->newLine();
+
+        $this->comment('Next Steps:');
+        $this->line('  1. Start your server: <fg=yellow>php artisan serve</>');
+        $this->line('  2. Visit: <fg=cyan;options=bold>http://localhost:8000/kh-pdf-test</>');
+        
+        $this->newLine();
     }
 }
