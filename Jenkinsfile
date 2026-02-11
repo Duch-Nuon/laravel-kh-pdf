@@ -19,7 +19,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'composer install --prefer-dist --no-progress --no-interaction'
+                sh 'composer update --prefer-dist --no-progress --no-interaction'
             }
         }
 
