@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'composer:latest'
-            args '-u root'
+            image 'duchnuon/lrl-ci-image:php8.2'
+            args '-u root:root'
         }
     }
     
@@ -13,17 +13,21 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                sh 'git config --global --add safe.directory "${WORKSPACE}"'
                 checkout scm
+            }
+        }
+
+        stage('Setup Composer') {
+            steps {
+                sh 'curl -sSLo /usr/local/bin/composer https://getcomposer.org/download/2.8.4/composer.phar && chmod +x /usr/local/bin/composer'
+                sh 'composer --version'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'apk add --no-cache zlib-dev freetype-dev libjpeg-turbo-dev libpng-dev libxml2-dev libzip-dev oniguruma-dev'
-                sh 'docker-php-ext-configure gd --with-freetype --with-jpeg'
-                sh 'docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mbstring xml dom curl zip'
-                sh 'composer install --prefer-dist --no-dev --no-scripts --no-autoloader'
+                sh 'composer install --prefer-dist --no-progress --no-interaction'
+                sh 'composer --version'
             }
         }
 
