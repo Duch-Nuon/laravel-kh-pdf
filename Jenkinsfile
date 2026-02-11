@@ -17,9 +17,8 @@ pipeline {
             }
         }
 
-        stage('Setup Composer') {
+        stage('Check Composer Version') {
             steps {
-                sh 'curl -sSLo /usr/local/bin/composer https://getcomposer.org/download/2.8.4/composer.phar && chmod +x /usr/local/bin/composer'
                 sh 'composer --version'
             }
         }
