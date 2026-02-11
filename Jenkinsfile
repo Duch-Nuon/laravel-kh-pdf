@@ -20,7 +20,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'apt-get update && apt-get install -y zlib1g-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev libxml2-dev libzip-dev libonig-dev'
+                sh 'apk add --no-cache zlib-dev freetype-dev libjpeg-turbo-dev libpng-dev libxml2-dev libzip-dev oniguruma-dev'
                 sh 'docker-php-ext-configure gd --with-freetype --with-jpeg'
                 sh 'docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mbstring xml dom curl zip'
                 sh 'composer install --prefer-dist --no-progress --no-interaction'
