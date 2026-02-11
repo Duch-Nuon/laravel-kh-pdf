@@ -5,6 +5,10 @@ pipeline {
             args '-u root:root'
         }
     }
+    
+    triggers {
+        githubPush()
+    }
 
     stages {
         stage('Checkout') {
@@ -25,7 +29,7 @@ pipeline {
             }
         }
     }
-    
+
 
     post {
         always {
