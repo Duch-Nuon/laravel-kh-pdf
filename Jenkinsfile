@@ -13,13 +13,17 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                sh 'git config --global --add safe.directory "${WORKSPACE}"'
                 checkout scm
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'composer update --prefer-dist --no-progress --no-interaction'
+                sh 'apt-get update && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev'
+                sh 'docker-php-ext-configure gd --with-freetype --with-jpeg'
+                sh 'docker-php-ext-install gd'
+                sh 'composer install --prefer-dist --no-progress --no-interaction'
             }
         }
 
