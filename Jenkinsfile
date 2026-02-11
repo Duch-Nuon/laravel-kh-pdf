@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'composer:latest'
-            args '-u root:root'
+            args '-u root'
         }
     }
     
