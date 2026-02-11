@@ -15,7 +15,6 @@ class PdfServiceTest extends TestCase
             \KhmerPdf\LaravelKhPdf\Providers\PdfKhServiceProvider::class,
         ];
     }
-
     protected function getPackageAliases($app)
     {
         return [
