@@ -1,0 +1,29 @@
+name: Auto Testing Package
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    container:
+      image: duchnuon/lrl-ci-image:php8.2
+      options: --user root
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Composer Version
+        run: composer --version
+
+      - name: Install Dependencies
+        run: |
+          composer install --prefer-dist --no-progress --no-interaction
+          composer --version
+
+      - name: Run Tests
+        run: vendor/bin/phpunit --testdox
